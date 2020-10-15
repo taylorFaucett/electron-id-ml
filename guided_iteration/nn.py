@@ -35,7 +35,7 @@ def nn(
     #     )
 
     optimizer = tf.keras.optimizers.Adam(
-        learning_rate=0.01,
+        learning_rate=0.001,
         beta_1=0.9,
         beta_2=0.999,
         epsilon=1e-07,
@@ -51,10 +51,10 @@ def nn(
                 kernel_initializer=initializer,
                 activation="relu",
                 kernel_constraint=tf.keras.constraints.MaxNorm(3),
-#                 bias_constraint=tf.keras.constraints.MaxNorm(3),
-#                 kernel_regularizer=tf.keras.regularizers.l1_l2(l1=1e-5, l2=1e-4),
-#                 bias_regularizer=tf.keras.regularizers.l2(1e-4),
-#                 activity_regularizer=tf.keras.regularizers.l2(1e-5),
+                bias_constraint=tf.keras.constraints.MaxNorm(3),
+                kernel_regularizer=tf.keras.regularizers.l1_l2(l1=1e-5, l2=1e-4),
+                bias_regularizer=tf.keras.regularizers.l2(1e-4),
+                activity_regularizer=tf.keras.regularizers.l2(1e-5),
             )
         )
     #         if lix <= layers - 2:

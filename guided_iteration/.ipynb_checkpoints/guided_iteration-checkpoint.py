@@ -214,8 +214,8 @@ def check_efps(ix):
         efp_df = pd.read_feather(efp)
 
         # Use the same diff-order sig/bkg pairs to compare with ll predictions
-        efp0 = efp_df.iloc[idx0]["nnify"].values
-        efp1 = efp_df.iloc[idx1]["nnify"].values
+        efp0 = efp_df.iloc[idx0]["features"].values # was "nnify"
+        efp1 = efp_df.iloc[idx1]["features"].values # was "nnify"
 
         # Calculate the ado
         ado_val = np.mean(do_calc(fx0=ll0, fx1=ll1, gx0=efp0, gx1=efp1))
@@ -308,16 +308,12 @@ def train_nn(ix):
 
 
 if __name__ == "__main__":
-    # All data is contained in the directory defined in it_dir
-    # However, none of the code exists there. To start from scratch
-    # e.g. after changing NN settings, just delete the it_dir
-    # directory and everything will go through the guided process again
     chdir(path.join(home, "guided_iteration"))
-    run_name = "7HL_mass_ircSafe_adoFix"
+    run_name = "7HL_noNNIFY"
     incl_hl = True
-    incl_mass = True
+    incl_mass = False
     incl_pT = False
-    irc_safe = True
+    irc_safe = False
     it_dir = path.join("results", run_name)
     ll_benchmark = 0.9720
 
