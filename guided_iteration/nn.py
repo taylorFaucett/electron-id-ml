@@ -42,19 +42,19 @@ def nn(
         amsgrad=False,
         name="Adam",
     )
-    initializer = tf.keras.initializers.GlorotUniform()
+
     model.add(tf.keras.layers.Flatten(input_dim=X_train.shape[1]))
     for lix in range(layers):
         model.add(
             tf.keras.layers.Dense(
                 nodes,
-                kernel_initializer=initializer,
+                kernel_initializer="normal",
                 activation="relu",
                 kernel_constraint=tf.keras.constraints.MaxNorm(3),
                 bias_constraint=tf.keras.constraints.MaxNorm(3),
-                kernel_regularizer=tf.keras.regularizers.l1_l2(l1=1e-5, l2=1e-4),
-                bias_regularizer=tf.keras.regularizers.l2(1e-4),
-                activity_regularizer=tf.keras.regularizers.l2(1e-5),
+#                 kernel_regularizer=tf.keras.regularizers.l1_l2(l1=1e-5, l2=1e-4),
+#                 bias_regularizer=tf.keras.regularizers.l2(1e-4),
+#                 activity_regularizer=tf.keras.regularizers.l2(1e-5),
             )
         )
     #         if lix <= layers - 2:
