@@ -30,10 +30,6 @@ def nn(
     print("    Training a new model at: " + model_file)
     model = tf.keras.Sequential()
 
-    #     optimizer = tf.keras.optimizers.SGD(
-    #         learning_rate=0.5, momentum=0.0, nesterov=False, name="SGD"
-    #     )
-
     optimizer = tf.keras.optimizers.Adam(
         learning_rate=0.001,
         beta_1=0.9,
@@ -52,13 +48,8 @@ def nn(
                 activation="relu",
                 kernel_constraint=tf.keras.constraints.MaxNorm(3),
                 bias_constraint=tf.keras.constraints.MaxNorm(3),
-#                 kernel_regularizer=tf.keras.regularizers.l1_l2(l1=1e-5, l2=1e-4),
-#                 bias_regularizer=tf.keras.regularizers.l2(1e-4),
-#                 activity_regularizer=tf.keras.regularizers.l2(1e-5),
             )
         )
-    #         if lix <= layers - 2:
-    #             model.add(tf.keras.layers.Dropout(0.5))
     model.add(tf.keras.layers.Dense(1, activation="sigmoid"))
 
     model.compile(
