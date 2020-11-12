@@ -2,7 +2,7 @@ import glob
 import os
 
 # Suppress all the tensorflow debugging info for new networks
-# os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 import tensorflow as tf
 
 # This function keeps the learning rate at 0.001 for the first ten epochs

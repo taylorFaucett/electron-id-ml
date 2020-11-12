@@ -309,11 +309,11 @@ def train_nn(ix):
 
 if __name__ == "__main__":
     chdir(path.join(home, "guided_iteration"))
-    run_name = "7HL_noNNIFY"
+    run_name = "7HL_ircSafe_noNNIFY"
     incl_hl = True
     incl_mass = False
     incl_pT = False
-    irc_safe = False
+    irc_safe = True
     it_dir = path.join("results", run_name)
     ll_benchmark = 0.9720
 
@@ -335,7 +335,7 @@ if __name__ == "__main__":
     selected_efps, aucs, ados = [], [], []
 
     ix, ado_max, auc_val = 0, 0, 0
-    while ado_max < 1 and auc_val < ll_benchmark:
+    while ado_max < 1 and auc_val < ll_benchmark and ix <=4:
         # Define data sub-directories
         pass_dir = f"{it_dir}/p{ix}"
         model_dir = f"{pass_dir}/model_files"
