@@ -2,3 +2,4 @@ data/
 graphs/
 results/
 .vscode
+.ipynb_checkpoints/
